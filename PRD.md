@@ -59,7 +59,7 @@ IDLE 상태에서 `A` 키를 입력하면 캐릭터가 `AUTO_RUN` 상태로 전�
 - 일반 RUN 속도보다 AUTO_RUN 속도가 빨라야 한다.
 - 현재 기준값:
   - 일반 RUN: `5`
-  - AUTO_RUN: `8`
+  - AUTO_RUN: `10`
 
 ### 5.2 좌우 경계
 
@@ -75,19 +75,19 @@ IDLE 상태에서 `A` 키를 입력하면 캐릭터가 `AUTO_RUN` 상태로 전�
 - 일반 상태의 캐릭터 크기는 기존 동작을 유지한다.
 - AUTO_RUN 상태의 캐릭터 하단이 땅에 묻히지 않아야 한다.
 - 현재 지면 기준:
-  - 땅 윗면 y 좌표: `61`
+  - 땅 윗면 y 좌표: `40`
   - AUTO_RUN 스프라이트 높이: `200`
-  - AUTO_RUN 캐릭터 중심 y 좌표: `161`
+  - AUTO_RUN 캐릭터 중심 y 좌표: `120`
 - 계산식:
 
 ```text
-AUTO_RUN_Y = GROUND_TOP + AUTO_RUN_SPRITE_WIDTH / 2
-           = 61 + 200 / 2
-           = 161
+AUTO_RUN_Y = GROUND_TOP + AUTO_RUN_SPRITE_WIDTH / 2 - 투명 하단 여백
+           = 40 + 200 / 2 - 20
+           = 120
 ```
 
-- AUTO_RUN 진입 시 캐릭터 y 좌표를 `161`로 변경한다.
-- AUTO_RUN 종료 시 기존 일반 상태 y 좌표인 `90`으로 복귀한다.
+- AUTO_RUN 진입 시 캐릭터 y 좌표를 `120`으로 변경한다.
+- AUTO_RUN 종료 시 일반 상태의 y 좌표인 `80`으로 복귀한다.
 
 ## 7. 시간 요구사항
 
