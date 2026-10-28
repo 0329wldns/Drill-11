@@ -21,6 +21,7 @@ class Boy:
     AUTO_RUN_DURATION = 5.0
     RUN_SPEED = 5
     AUTO_RUN_SPEED = 8
+    AUTO_RUN_FRAME_COUNT = 8
     SCREEN_WIDTH = 800
     SPRITE_WIDTH = 100
     AUTO_RUN_SPRITE_WIDTH = 200
@@ -110,7 +111,7 @@ class Boy:
                 min(self.SCREEN_WIDTH - half_width, self.x + direction * self.RUN_SPEED)
             )
         elif self.state == self.AUTO_RUN:
-            self.frame = (self.frame + 1) % 8
+            self.frame = (self.frame + 1) % self.AUTO_RUN_FRAME_COUNT
             direction = -1 if self.face_dir == -1 else 1
             half_width = self.AUTO_RUN_SPRITE_WIDTH // 2
             next_x = self.x + direction * self.AUTO_RUN_SPEED
