@@ -73,6 +73,13 @@ class Boy:
     def reset_normal_y(self):
         self.y = self.NORMAL_Y
 
+    def clamp_x(self, x, sprite_width):
+        half_width = sprite_width // 2
+        return max(
+            half_width,
+            min(self.SCREEN_WIDTH - half_width, x)
+        )
+
     def handle_event(self, event):
         if event.type == SDL_KEYDOWN:
             if self.state == self.SLEEP and event.key == SDLK_SPACE:
@@ -105,23 +112,18 @@ class Boy:
         elif self.state == self.RUN:
             self.frame = (self.frame + 1) % 8
             direction = -1 if self.face_dir == -1 else 1
-            half_width = self.SPRITE_WIDTH // 2
-            self.x = max(
-                half_width,
-                min(self.SCREEN_WIDTH - half_width, self.x + direction * self.RUN_SPEED)
+            self.x = self.clamp_x(
+                self.x + direction * self.RUN_SPEED,
+                self.SPRITE_WIDTH
             )
         elif self.state == self.AUTO_RUN:
             self.frame = (self.frame + 1) % self.AUTO_RUN_FRAME_COUNT
             direction = -1 if self.face_dir == -1 else 1
-            half_width = self.AUTO_RUN_SPRITE_WIDTH // 2
             next_x = self.x + direction * self.AUTO_RUN_SPEED
+            half_width = self.AUTO_RUN_SPRITE_WIDTH // 2
             if next_x <= half_width or next_x >= self.SCREEN_WIDTH - half_width:
                 self.face_dir *= -1
-                next_x = max(
-                    half_width,
-                    min(self.SCREEN_WIDTH - half_width, next_x)
-                )
-            self.x = next_x
+            self.x = self.clamp_x(next_x, self.AUTO_RUN_SPRITE_WIDTH)
             if time.monotonic() - self.auto_run_started_at >= self.AUTO_RUN_DURATION:
                 self.stop_auto_run()
 
