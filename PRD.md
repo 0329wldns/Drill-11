@@ -94,6 +94,7 @@ AUTO_RUN_Y = GROUND_TOP + AUTO_RUN_SPRITE_WIDTH / 2
 - AUTO_RUN 지속 시간은 5초이다.
 - 타이머는 AUTO_RUN 상태에 진입하는 순간 초기화한다.
 - 업데이트 과정에서 경과 시간을 확인하고 5초 이상이면 IDLE로 전환한다.
+- AUTO_RUN에서 RUN으로 전환한 경우에는 AUTO_RUN 타이머를 더 이상 적용하지 않는다.
 
 ## 8. 애니메이션 및 표시 요구사항
 
