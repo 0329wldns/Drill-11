@@ -43,4 +43,5 @@
   <text x="40" y="210" text-anchor="middle" class="note">initial</text>
   <text x="500" y="625" text-anchor="middle" class="note">AUTO_RUN: 방향키 없이 좌우 자동 이동, 화면 경계에서 방향 반전, 5초 후 IDLE</text>
   <text x="500" y="655" text-anchor="middle" class="note">AUTO_RUN은 RUN보다 빠르고 크게 표시되며 땅 위에 맞춰집니다.</text>
+  <text x="500" y="678" text-anchor="middle" class="note">AUTO_RUN 중심 x는 확대된 스프라이트 폭을 기준으로 화면 안에 제한됩니다.</text>
 </svg>
