@@ -27,7 +27,8 @@ class Boy:
     AUTO_RUN_SPRITE_WIDTH = 200
     NORMAL_Y = 90
     GROUND_TOP = 61
-    AUTO_RUN_Y = GROUND_TOP + AUTO_RUN_SPRITE_WIDTH // 2
+    AUTO_RUN_GROUND_OFFSET = AUTO_RUN_SPRITE_WIDTH // 2
+    AUTO_RUN_Y = GROUND_TOP + AUTO_RUN_GROUND_OFFSET
 
     def __init__(self):
         self.x, self.y = 400, self.NORMAL_Y
